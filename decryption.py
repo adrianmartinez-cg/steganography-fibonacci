@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
-import random
-def Fn(n):     
+def Fn(n):
     F=[0,1]
     indice=2
     soma=0
@@ -38,10 +37,14 @@ def ajeita_D(D,E_q,E_r):
             if i == j:
                 D[i][j] = 255*int(E_q[i]) + int(E_r[i])
     return D
+
+################################################################################
+
 D=cv2.imread('lena_encrypted.bmp',0)
 vetores=obtervetores()
 E_q=vetores[0].split(",")
 E_r=vetores[1].split(",")
+D=D[0:len(E_q),0:len(E_q)]
 D=np.array(D).tolist()
 D=ajeita_D(D,E_q,E_r)
 D=np.array(D)
